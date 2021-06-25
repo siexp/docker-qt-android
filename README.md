@@ -1,6 +1,9 @@
 # docker-qt-android
 Docker image for CI\CD for qt based android applications
 
+## Dependency
+https://code.qt.io/cgit/qbs/qbs.git/plain/scripts/install-qt.sh
+
 ## How to configure image 
 ```
 docker build --tag docker-qt-android --build-arg qt_packages="qtbase qttools qtdeclarative qtwebsockets qtandroidextras" .
@@ -26,3 +29,6 @@ pipelines:
         artifacts:
           - build/android-build/build/outputs/apk/debug/android-build-debug.apk
 ```
+
+## Similar projects
+* https://github.com/opengisch/docker-qt-ndk
