@@ -26,7 +26,7 @@ ENV PATH=${ANDROID_HOME}/emulator:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bi
 
 # install ndk and build tools
 ARG android_api=android-29
-ARG android_build_tools=30.0.2
+ARG android_build_tools=28.0.3
 ARG ndk_version=21.4.7075529
 RUN mkdir ~/.android && echo '### User Sources for Android SDK Manager' > ~/.android/repositories.cfg && \
     yes | sdkmanager --sdk_root=$ANDROID_HOME --licenses && \
@@ -34,7 +34,8 @@ RUN mkdir ~/.android && echo '### User Sources for Android SDK Manager' > ~/.and
     "platform-tools" \
     "build-tools;${android_build_tools}" \
     "platforms;${android_api}" \
-    "ndk;${ndk_version}" && \
+    "ndk;${ndk_version}" \
+    "emulator" && \
 # create symbolic link for licenses so qt can install required modules
     ln -s /opt/android/sdk/licenses /opt/android/sdk/ndk/licenses
 
